@@ -43,6 +43,7 @@ setInterval(() => {
 }, process.env.USER_CACHE_INTERVAL);
 
 cleanUserCache = () => {
+  console.log("Cleaning user cache");
   for (const user of userList) {
     if (user.timestamp <= Date.now() - process.env.USER_CACHE_INTERVAL) {
       userList = userList.filter((idx) => idx.id !== user.id);
