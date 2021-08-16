@@ -7,10 +7,10 @@ const server = new WebSocket.Server({ port: process.env.SOCKET_PORT });
 
 let userList = [];
 
-// Remo socket setup
-const remoSocket = new WebSocket(process.env.EXTERNAL_SOCKET_URL);
-remoSocket.on("open", () => {
-  remoSocket.emit(
+// external socket setup
+const extSocket = new WebSocket(process.env.EXTERNAL_SOCKET_URL);
+extSocket.on("open", () => {
+  extSocket.emit(
     JSON.stringify({
       e: "INTERNAL_LISTENER_AUTHENTICATE",
       d: {
