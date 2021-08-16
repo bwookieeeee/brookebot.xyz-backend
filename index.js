@@ -3,12 +3,13 @@ const WebSocket = require("ws");
 require("dotenv").config();
 
 const app = express();
+const server = new WebSocket.Server({ port: process.env.SOCKET_PORT });
 
 let userList = [];
 
 // Remo socket setup
 const remoSocket = new WebSocket(process.env.EXTERNAL_SOCKET_URL);
-remoSocket.onopen(() => {
+remoSocket.on("open", () => {
   remoSocket.emit(
     JSON.stringify({
       e: "INTERNAL_LISTENER_AUTHENTICATE",
@@ -38,9 +39,10 @@ app.listen(process.env.API_PORT, () => {
 
 // Once every process.env.USER_CACHE_INTERVAL hours,
 // delete all user reports older than said interval
-setInterval(() => {
-  cleanUserCache();
-}, process.env.USER_CACHE_INTERVAL);
+// TODO #8
+// setInterval(() => {
+//   cleanUserCache();
+// }, process.env.USER_CACHE_INTERVAL);
 
 cleanUserCache = () => {
   console.log("Cleaning user cache");
@@ -50,3 +52,9 @@ cleanUserCache = () => {
     }
   }
 };
+
+server.on("connection", (ws) => {
+  ws.on('message', (msg) => {
+    console.log(msg.toString());
+  })
+});
