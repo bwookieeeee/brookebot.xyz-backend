@@ -11,14 +11,20 @@ API Routes
 ----------
 
 +--------+------------------+--------------------------------------------------+
-| Method | Route            | Description                                      |
-+========+==================+==================================================+
-| GET    | ``/``            | Root request is useful for testing if the api is |
-|        |                  | working                                          |
-+--------+------------------+--------------------------------------------------+
-| GET    | ``/cachedLogins``| A list of all user login events in the last      |
-|        |                  | ``LOGIN_CACHE_INTERVAL`` milliseconds            |
-+--------+------------------+--------------------------------------------------+
+| Method | Route             | Description                                     |
++========+===================+=================================================+
+| GET    | ``/``             | Root request is useful for testing if the api is|
+|        |                   | working                                         |
++--------+-------------------+-------------------------------------------------+
+| GET    | ``/cachedLogins`` | A list of all user login events in the last     |
+|        |                   | ``LOGIN_CACHE_INTERVAL`` milliseconds           |
++--------+-------------------+-------------------------------------------------+
+| GET    | ``/cachedServers``| A list of all server creation events in the last|
+|        |                   | ``SERVER_CACHE_INTERVAL`` milliseconds          |
++--------+-------------------+-------------------------------------------------+
+| GET    | ``/cachedPhotos`` | A list of all photo submission events in the    |
+|        |                   | last ``PHOTO_CACHE_INTERVAL`` milliseconds      |
++--------+-------------------+-------------------------------------------------+
 
 WS events
 ---------
