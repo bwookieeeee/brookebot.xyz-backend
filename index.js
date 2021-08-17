@@ -6,7 +6,14 @@ require("dotenv").config();
 const app = express();
 const server = new WebSocket.Server({ port: process.env.SOCKET_PORT });
 
-let userList = [];
+let userList = [
+  {
+    cacheId: 0,
+    cacheTime: Date.now(),
+    username: "testUser",
+
+  }
+];
 
 // external socket setup
 const extSocket = new WebSocket(process.env.EXTERNAL_SOCKET_URL);
@@ -78,20 +85,17 @@ app.listen(process.env.API_PORT, () => {
   console.log("Listening", process.env.API_PORT);
 });
 
-// Once every process.env.USER_CACHE_INTERVAL hours,
-// delete all user reports older than said interval
-// TODO #8
-// setInterval(() => {
-//   cleanUserCache();
-// }, process.env.USER_CACHE_INTERVAL);
 
 cleanUserCache = () => {
-  console.log("Cleaning user cache");
+  let uncached = 0;
   for (const user of userList) {
-    if (user.timestamp <= Date.now() - process.env.USER_CACHE_INTERVAL) {
+    const oldTime = Date.now() - process.env.USER_CACHE_INTERVAL;
+    if (user.cacheTime <= oldTime) {
       userList = userList.filter((idx) => idx.id !== user.id);
+      uncached ++;
     }
   }
+  console.log(`Uncached ${uncached} user logins`)
 };
 
 server.on("connection", (ws) => {
@@ -99,3 +103,9 @@ server.on("connection", (ws) => {
     console.log(msg.toString());
   });
 });
+
+
+// Once every process.env.USER_CACHE_INTERVAL hours,
+// delete all user reports older than said interval
+// TODO #8
+setInterval(cleanUserCache, process.env.USER_CACHE_INTERVAL);
