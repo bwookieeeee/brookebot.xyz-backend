@@ -10,8 +10,7 @@ let userList = [
   {
     cacheId: 0,
     cacheTime: Date.now(),
-    username: "testUser",
-
+    username: "testUser"
   }
 ];
 
@@ -46,14 +45,14 @@ extSocket.on("message", (event) => {
   }
 });
 
-addUserToCache = usr => {
+addUserToCache = (usr) => {
   const alt = JSON.parse(Buffer.from(usr.alt, "base64").toString());
   const cacheId = uuid.v4();
   const cacheTime = Date.now();
   console.log(`Adding user ${usr.username} to cache as ${cacheId}`);
   userList.push({
     cacheId: cacheId,
-    cacheTime:cacheTime,
+    cacheTime: cacheTime,
     username: usr.username,
     ip: usr.ip,
     hardwareConcurrency: alt.hardwareConcurrency,
@@ -63,10 +62,10 @@ addUserToCache = usr => {
     height: alt.height,
     internalUsernameBanned: usr.internalUsernameBanned,
     internalIpBanned: usr.internalIpBanned
-  })
+  });
 
   // console.log(userList);
-}
+};
 
 // Express setup
 app.use(express.json());
@@ -81,10 +80,13 @@ app.get("/", (req, res) => {
   res.status(200).send("hi!");
 });
 
+app.get("/cachedUsers", (req, res) => {
+  res.status(200).send({ userCache: userList });
+});
+
 app.listen(process.env.API_PORT, () => {
   console.log("Listening", process.env.API_PORT);
 });
-
 
 cleanUserCache = () => {
   let uncached = 0;
@@ -92,10 +94,10 @@ cleanUserCache = () => {
     const oldTime = Date.now() - process.env.USER_CACHE_INTERVAL;
     if (user.cacheTime <= oldTime) {
       userList = userList.filter((idx) => idx.id !== user.id);
-      uncached ++;
+      uncached++;
     }
   }
-  console.log(`Uncached ${uncached} user logins`)
+  console.log(`Uncached ${uncached} user logins`);
 };
 
 server.on("connection", (ws) => {
@@ -103,7 +105,6 @@ server.on("connection", (ws) => {
     console.log(msg.toString());
   });
 });
-
 
 // Once every process.env.USER_CACHE_INTERVAL hours,
 // delete all user reports older than said interval
