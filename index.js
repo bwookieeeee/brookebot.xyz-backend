@@ -111,7 +111,7 @@ server.on("connection", (ws) => {
   });
 });
 
-// Once every process.env.USER_CACHE_INTERVAL hours,
+// Once every process.env.LOGIN_CACHE_INTERVAL hours,
 // delete all user reports older than said interval
-setInterval(cleanLoginCache, process.env.USER_CACHE_INTERVAL);
+setInterval(cleanLoginCache, process.env.LOGIN_CACHE_INTERVAL);
 setInterval(cleanServerCache, process.env.SERVER_CACHE_INTERVAL);
