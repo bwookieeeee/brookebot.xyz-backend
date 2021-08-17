@@ -16,8 +16,8 @@ API Routes
 | GET    | ``/``            | Root request is useful for testing if the api is |
 |        |                  | working                                          |
 +--------+------------------+--------------------------------------------------+
-| GET    | ``/cachedUsers`` | A list of all user login events in the last      |
-|        |                  | ``USER_CACHE_INTERVAL`` milliseconds             |
+| GET    | ``/cachedLogins``| A list of all user login events in the last      |
+|        |                  | ``LOGIN_CACHE_INTERVAL`` milliseconds            |
 +--------+------------------+--------------------------------------------------+
 
 WS events
