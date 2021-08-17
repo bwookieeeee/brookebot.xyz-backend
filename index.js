@@ -9,16 +9,15 @@ const {
   cleanLoginCache
 } = require("./components/userLoginHandler");
 
+const {
+  serverCache,
+  addServerToCache,
+  cleanServerCache
+} = require("./components/serverHandler");
+
 const app = express();
 const server = new WebSocket.Server({ port: process.env.SOCKET_PORT });
 
-let serverList = [
-  {
-    cacheId: 0,
-    cacheTime: Date.now(),
-    serverName: "testServer"
-  }
-];
 
 // external socket setup
 const extSocket = new WebSocket(process.env.EXTERNAL_SOCKET_URL);
@@ -55,22 +54,6 @@ extSocket.on("message", (event) => {
   }
 });
 
-addServerToCache = (data) => {
-  const cacheId = uuid.v4();
-  const cacheTime = Date.now();
-  console.log(
-    `Adding server ${data.server.server_name} to cache as ${cacheId}`
-  );
-  serverList.push({
-    cacheId: cacheId,
-    cacheTime: cacheTime,
-    serverName: data.server.serverName,
-    defaultChannel: data.server.settings.default_channel,
-    owner: data.user.username
-  });
-};
-
-
 // Express setup
 app.use(express.json());
 app.use((req, res, next) => {
@@ -91,18 +74,6 @@ app.get("/cachedLogins", (req, res) => {
 app.listen(process.env.API_PORT, () => {
   console.log("Listening", process.env.API_PORT);
 });
-
-cleanServerCache = () => {
-  let uncached = 0;
-  for (const server of serverList) {
-    const oldTime = Date.now() - process.env.SERVER_CACHE_INTERVAL;
-    if (server.cacheTime <= oldTime) {
-      serverList = serverLIst.filter((idx) => idx.cacheId !== server.cacheId);
-      uncached++;
-    }
-  }
-  console.log(`Uncached ${uncached} server creations`);
-};
 
 
 server.on("connection", (ws) => {
