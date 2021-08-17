@@ -1,24 +1,20 @@
 require("dotenv").config();
 const express = require("express");
 const WebSocket = require("ws");
-const uuid = require("uuid");
 
 const {
   loginCache,
   addLoginToCache,
-  cleanLoginCache
 } = require("./components/userLoginHandler");
 
 const {
   serverCache,
   addServerToCache,
-  cleanServerCache
 } = require("./components/serverHandler");
 
 const {
   photoCache,
   addPhotoToCache,
-  cleanPhotoCache
 } = require("./components/photoCache");
 
 const app = express();
