@@ -33,6 +33,6 @@ cleanServerCache = () => {
 
 module.exports = {
   serverCache: serverCache,
-  addServerToCache: this.addServerToCache,
+  addServerToCache: addServerToCache,
   cleanServerCache: cleanServerCache
 };
