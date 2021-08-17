@@ -47,6 +47,12 @@ throughout the project.
 | ``USER_CACHE_INTERVAL``          | Time in milliseconds between user cache   |
 |                                  | cleaning intervals                        |
 +----------------------------------+-------------------------------------------+
+| ``SERVER_CACHE_INTERVAL``        | Time in milliseconds between server cache |
+|                                  | cleaning intervals                        |
++----------------------------------+-------------------------------------------+
+| ``PICTURE_CACHE_INTERVAL``       | Time in milliseconds between picture cache|
+|                                  | cleaning intervals                        |
++----------------------------------+-------------------------------------------+
 
 License
 -------
