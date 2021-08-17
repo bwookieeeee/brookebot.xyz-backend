@@ -15,9 +15,14 @@ const {
   cleanServerCache
 } = require("./components/serverHandler");
 
+const {
+  photoCache,
+  addPhotoToCache,
+  cleanPhotoCache
+} = require("./components/photoCache");
+
 const app = express();
 const server = new WebSocket.Server({ port: process.env.SOCKET_PORT });
-
 
 // external socket setup
 const extSocket = new WebSocket(process.env.EXTERNAL_SOCKET_URL);
@@ -47,6 +52,9 @@ extSocket.on("message", (event) => {
       console.log("NEW SERVER");
       addServerToCache(data.d);
       break;
+    case "INTERNAL_REQUEST_IMG_APPROVAL":
+      console.log("NEW PHOTO");
+      addPhotoToCache(data.d);
     case "ROBOT_SERVER_UPDATED":
       break;
     default:
@@ -75,7 +83,6 @@ app.listen(process.env.API_PORT, () => {
   console.log("Listening", process.env.API_PORT);
 });
 
-
 server.on("connection", (ws) => {
   ws.on("message", (msg) => {
     console.log(msg.toString());
@@ -86,3 +93,4 @@ server.on("connection", (ws) => {
 // delete all user reports older than said interval
 setInterval(cleanLoginCache, process.env.LOGIN_CACHE_INTERVAL);
 setInterval(cleanServerCache, process.env.SERVER_CACHE_INTERVAL);
+setInterval(cleanPhotoCache, process.env.PHOTO_CACHE_INTERVAL)
