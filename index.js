@@ -75,6 +75,10 @@ app.get("/cachedLogins", (req, res) => {
   res.status(200).send({ loginCache: loginCache });
 });
 
+app.get("/cachedPhotos", (req, res) => {
+  res.status(200).send({ photoCache: photoCache });
+})
+
 app.listen(process.env.API_PORT, () => {
   console.log("Listening", process.env.API_PORT);
 });
