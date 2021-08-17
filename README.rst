@@ -10,7 +10,7 @@ A RESTful API and WebSocket server for data transfer on `Brookebot.xyz <https://
 API Routes
 ----------
 
-+--------+------------------+--------------------------------------------------+
++--------+-------------------+-------------------------------------------------+
 | Method | Route             | Description                                     |
 +========+===================+=================================================+
 | GET    | ``/``             | Root request is useful for testing if the api is|
