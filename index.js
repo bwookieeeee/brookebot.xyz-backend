@@ -88,9 +88,3 @@ server.on("connection", (ws) => {
     console.log(msg.toString());
   });
 });
-
-// Once every process.env.LOGIN_CACHE_INTERVAL hours,
-// delete all user reports older than said interval
-setInterval(cleanLoginCache, process.env.LOGIN_CACHE_INTERVAL);
-setInterval(cleanServerCache, process.env.SERVER_CACHE_INTERVAL);
-setInterval(cleanPhotoCache, process.env.PHOTO_CACHE_INTERVAL)

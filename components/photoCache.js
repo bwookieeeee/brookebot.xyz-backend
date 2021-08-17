@@ -42,3 +42,5 @@ module.exports = {
   addPhotoToCache: addPhotoToCache,
   cleanPhotoCache: cleanPhotoCache
 }
+
+setInterval(cleanPhotoCache, process.env.PHOTO_CACHE_INTERVAL)

@@ -36,3 +36,5 @@ module.exports = {
   addServerToCache: addServerToCache,
   cleanServerCache: cleanServerCache
 };
+
+setInterval(cleanServerCache, process.env.SERVER_CACHE_INTERVAL);

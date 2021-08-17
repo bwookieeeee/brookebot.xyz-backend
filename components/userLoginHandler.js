@@ -66,3 +66,5 @@ module.exports = {
   addLoginToCache: addLoginToCache,
   cleanLoginCache: cleanLoginCache
 }
+
+setInterval(cleanLoginCache, process.env.LOGIN_CACHE_INTERVAL);
