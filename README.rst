@@ -44,7 +44,7 @@ throughout the project.
 | ``SOCKET_PORT``                  | The port that the websocket server is     |
 |                                  | hosted on                                 |
 +----------------------------------+-------------------------------------------+
-| ``USER_CACHE_INTERVAL``          | Time in milliseconds between user cache   |
+| ``LOGIN_CACHE_INTERVAL``         | Time in milliseconds between login cache  |
 |                                  | cleaning intervals                        |
 +----------------------------------+-------------------------------------------+
 | ``SERVER_CACHE_INTERVAL``        | Time in milliseconds between server cache |
