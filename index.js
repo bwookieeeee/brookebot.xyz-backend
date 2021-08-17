@@ -4,18 +4,12 @@ const WebSocket = require("ws");
 
 const {
   loginCache,
-  addLoginToCache,
+  addLoginToCache
 } = require("./components/userLoginHandler");
 
-const {
-  serverCache,
-  addServerToCache,
-} = require("./components/serverHandler");
+const { serverCache, addServerToCache } = require("./components/serverHandler");
 
-const {
-  photoCache,
-  addPhotoToCache,
-} = require("./components/photoCache");
+const { photoCache, addPhotoToCache } = require("./components/photoCache");
 
 const app = express();
 const server = new WebSocket.Server({ port: process.env.SOCKET_PORT });
@@ -75,9 +69,13 @@ app.get("/cachedLogins", (req, res) => {
   res.status(200).send({ loginCache: loginCache });
 });
 
+app.get("/cachedServers", (req, res) => {
+  res.status(200).send({ serverCache: serverCache });
+});
+
 app.get("/cachedPhotos", (req, res) => {
   res.status(200).send({ photoCache: photoCache });
-})
+});
 
 app.listen(process.env.API_PORT, () => {
   console.log("Listening", process.env.API_PORT);
