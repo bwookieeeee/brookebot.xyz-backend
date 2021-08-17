@@ -63,6 +63,6 @@ cleanLoginCache = () => {
 
 module.exports = {
   loginCache: loginCache,
-  addLoginToCache: this.addLoginToCache,
+  addLoginToCache: addLoginToCache,
   cleanLoginCache: cleanLoginCache
 }
