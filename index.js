@@ -70,27 +70,6 @@ addServerToCache = (data) => {
   });
 };
 
-addUserToCache = (usr) => {
-  const alt = JSON.parse(Buffer.from(usr.alt, "base64").toString());
-  const cacheId = uuid.v4();
-  const cacheTime = Date.now();
-  console.log(`Adding user ${usr.username} to cache as ${cacheId}`);
-  userList.push({
-    cacheId: cacheId,
-    cacheTime: cacheTime,
-    username: usr.username,
-    ip: usr.ip,
-    hardwareConcurrency: alt.hardwareConcurrency,
-    userAgent: alt.userAgent,
-    renderer: alt.renderer,
-    width: alt.width,
-    height: alt.height,
-    internalUsernameBanned: usr.internalUsernameBanned,
-    internalIpBanned: usr.internalIpBanned
-  });
-
-  // console.log(userList);
-};
 
 // Express setup
 app.use(express.json());
@@ -125,17 +104,6 @@ cleanServerCache = () => {
   console.log(`Uncached ${uncached} server creations`);
 };
 
-cleanUserCache = () => {
-  let uncached = 0;
-  for (const user of userList) {
-    const oldTime = Date.now() - process.env.USER_CACHE_INTERVAL;
-    if (user.cacheTime <= oldTime) {
-      userList = userList.filter((idx) => idx.cacheId !== user.cacheId);
-      uncached++;
-    }
-  }
-  console.log(`Uncached ${uncached} user logins`);
-};
 
 server.on("connection", (ws) => {
   ws.on("message", (msg) => {
