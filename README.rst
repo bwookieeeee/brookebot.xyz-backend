@@ -1,6 +1,11 @@
 Brookebot.xyz Backend
 =====================
 
+|CodeQL|
+
+|CodeQL| image:: https://github.com/bwookieeeee/brookebot.xyz-backend/actions/workflows/codeql-analysis.yml/badge.svg
+  :target: https://github.com/bwookieeeee/brookebot.xyz-backend/actions/workflows/codeql-analysis.yml
+
 A RESTful API and WebSocket server for data transfer on `Brookebot.xyz <https://brookebot.xyz>`_.
 
 API Routes
