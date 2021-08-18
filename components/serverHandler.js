@@ -2,11 +2,11 @@ require("dotenv").config();
 const uuid = require("uuid");
 
 let serverCache = [
-  {
-    cacheId: 0,
-    cacheTime: Date.now(),
-    serverName: "test server"
-  }
+  // {
+  //   cacheId: 0,
+  //   cacheTime: Date.now(),
+  //   serverName: "test server"
+  // }
 ];
 
 addServerToCache = (data) => {

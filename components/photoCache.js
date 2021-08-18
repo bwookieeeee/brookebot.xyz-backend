@@ -2,15 +2,15 @@ require("dotenv").config();
 const uuid = require("uuid");
 
 let photoCache = [
-  {
-    approved: false,
-    cacheId: 0,
-    cacheTime: Date.now(),
-    created: Date.now(),
-    photoId: 0,
-    ref: 0,
-    userId: 0
-  }
+  // {
+  //   approved: false,
+  //   cacheId: 0,
+  //   cacheTime: Date.now(),
+  //   created: Date.now(),
+  //   photoId: 0,
+  //   ref: 0,
+  //   userId: 0
+  // }
 ];
 
 addPhotoToCache = (img) => {

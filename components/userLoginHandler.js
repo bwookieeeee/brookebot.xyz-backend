@@ -5,11 +5,11 @@ const uuid = require("uuid");
  * A cache of all logins in the past LOGIN_CACHE_INTERVAL milliseconds
  */
 let loginCache = [
-  {
-    cacheId: 0,
-    cacheTime: Date.now(),
-    username: "test user"
-  }
+  // {
+  //   cacheId: 0,
+  //   cacheTime: Date.now(),
+  //   username: "test user"
+  // }
 ];
 
 /**
