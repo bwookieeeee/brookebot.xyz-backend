@@ -1,9 +1,19 @@
 Brookebot.xyz Backend
 =====================
 
-|CodeQL|
+|CodeQL| |codecovMaintain| |codecovCoverage|
 
 .. |CodeQL| image:: https://github.com/bwookieeeee/brookebot.xyz-backend/actions/workflows/codeql-analysis.yml/badge.svg
+
+.. |codecovMaintain| image:: https://api.codeclimate.com/v1/badges/b57aff3c61eef078dc4b/maintainability
+   :target: https://codeclimate.com/github/bwookieeeee/brookebot.xyz-backend/maintainability
+   :alt: Maintainability
+   
+.. |codecovCoverage| image:: https://api.codeclimate.com/v1/badges/b57aff3c61eef078dc4b/test_coverage
+   :target: https://codeclimate.com/github/bwookieeeee/brookebot.xyz-backend/test_coverage
+   :alt: Test Coverage
+
+
 
 A RESTful API and WebSocket server for data transfer on `Brookebot.xyz <https://brookebot.xyz>`_.
 
