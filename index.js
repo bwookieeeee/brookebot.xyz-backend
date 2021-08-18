@@ -2,14 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const WebSocket = require("ws");
 
-const {
-  loginCache,
-  addLoginToCache
-} = require("./components/userLoginHandler");
-
+const { loginCache, addLoginToCache } = require("./components/loginHandler");
 const { serverCache, addServerToCache } = require("./components/serverHandler");
-
-const { photoCache, addPhotoToCache } = require("./components/photoCache");
+const { photoCache, addPhotoToCache } = require("./components/photoHandler");
 
 const app = express();
 const server = new WebSocket.Server({ port: process.env.SOCKET_PORT });
