@@ -1,7 +1,7 @@
 Brookebot.xyz Backend
 =====================
 
-|CodeQL| |CCMaintain| ||CCCoverage| |TravisCI|
+|CodeQL| |CCMaintain| |CCCoverage| |TravisCI|
 
 .. |CodeQL| image:: https://github.com/bwookieeeee/brookebot.xyz-backend/actions/workflows/codeql-analysis.yml/badge.svg
 
