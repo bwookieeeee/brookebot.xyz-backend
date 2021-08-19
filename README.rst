@@ -1,7 +1,7 @@
 Brookebot.xyz Backend
 =====================
 
-|CodeQL| |CCMaintain| |TravisCI|
+|CodeQL| |CCMaintain| ||CCCoverage| |TravisCI|
 
 .. |CodeQL| image:: https://github.com/bwookieeeee/brookebot.xyz-backend/actions/workflows/codeql-analysis.yml/badge.svg
 
@@ -9,6 +9,11 @@ Brookebot.xyz Backend
    :target: https://codeclimate.com/github/bwookieeeee/brookebot.xyz-backend/maintainability
    :alt: Maintainability
    
+.. |CCCoverage| image:: https://api.codeclimate.com/v1/badges/b57aff3c61eef078dc4b/test_coverage
+   :target: https://codeclimate.com/github/bwookieeeee/brookebot.xyz-backend/test_coverage
+   :alt: Test Coverage
+ 
+  
 .. |TravisCI| image:: https://travis-ci.com/bwookieeeee/brookebot.xyz-backend.svg?branch=main
    :target: https://travis-ci.com/bwookieeeee/brookebot.xyz-backend
 
