@@ -22,7 +22,8 @@ addPhotoToCache = (img) => {
     created: img.image.created,
     photoId: img.image.id,
     ref: img.image.ref,
-    userId: img.userId.id
+    userId: img.user.id,
+    username: img.user.username
   });
 };
 
@@ -43,4 +44,6 @@ module.exports = {
   cleanPhotoCache: cleanPhotoCache
 }
 
-setInterval(cleanPhotoCache, process.env.PHOTO_CACHE_INTERVAL)
+if (!process.env.IS_TESTING) {
+  setInterval(cleanPhotoCache, process.env.PHOTO_CACHE_INTERVAL)
+}

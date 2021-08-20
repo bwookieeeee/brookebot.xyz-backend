@@ -1,3 +1,17 @@
 language: node_js
 node_js:
   - 16
+dist: "xenial"
+os:
+  - "linux"
+env:
+  global:
+    - CC_TEST_REPORTER_ID=94785b61f26574518e9cbf2710088c8c987c5422e97cb62b68a099f51209235f
+before_script:
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
+script:
+  - npm test
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
