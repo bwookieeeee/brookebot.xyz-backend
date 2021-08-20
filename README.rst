@@ -1,7 +1,7 @@
 Brookebot.xyz Backend
 =====================
 
-|CodeQL| |CCMaintain| |CCCoverage| |TravisCI| |Ko-Fi|
+|CodeQL| |CCMaintain| |CCCoverage| |TravisCI| 
 
 .. |CodeQL| image:: https://github.com/bwookieeeee/brookebot.xyz-backend/actions/workflows/codeql-analysis.yml/badge.svg
 
@@ -82,3 +82,6 @@ License
 Copyright (c) 2021 Brooke Morrison <bwookieeeee@gmail.com>
 
 Licensed under Apache 2.0, see LICENSE for License.
+
+
+|Ko-Fi|
