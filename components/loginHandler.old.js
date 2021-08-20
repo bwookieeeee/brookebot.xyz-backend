@@ -1,3 +1,5 @@
+//DEPRECATED
+
 require("dotenv");
 const uuid = require("uuid");
 
