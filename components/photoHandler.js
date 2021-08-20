@@ -27,23 +27,28 @@ addPhotoToCache = (img) => {
   });
 };
 
+clearCache = () => {
+  photoCache = [];
+};
+
 cleanPhotoCache = () => {
   let uncached = 0;
   for (const photo of photoCache) {
     if (photo.cacheTime <= Date.now() - process.env.PHOTO_CACHE_INTERVAL) {
-      photoCache = photoCache.filter(idx => idx.cacheId !== photo.cacheId);
+      photoCache = photoCache.filter((idx) => idx.cacheId !== photo.cacheId);
       uncached++;
     }
   }
-  console.log(`Uncached ${uncached} photos`)
+  console.log(`Uncached ${uncached} photos`);
+};
+
+if (!process.env.IS_TESTING) {
+  setInterval(cleanPhotoCache, process.env.PHOTO_CACHE_INTERVAL);
 }
 
 module.exports = {
   photoCache: photoCache,
   addPhotoToCache: addPhotoToCache,
-  cleanPhotoCache: cleanPhotoCache
-}
-
-if (!process.env.IS_TESTING) {
-  setInterval(cleanPhotoCache, process.env.PHOTO_CACHE_INTERVAL)
-}
+  cleanPhotoCache: cleanPhotoCache,
+  clearCache: clearCache
+};

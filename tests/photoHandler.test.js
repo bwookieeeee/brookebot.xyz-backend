@@ -1,8 +1,8 @@
-
-const {
+let {
   photoCache,
   addPhotoToCache,
   cleanPhotoCache,
+  clearCache
 } = require("../components/photoHandler");
 
 describe("Sanity test", () => {
@@ -12,22 +12,62 @@ describe("Sanity test", () => {
 });
 
 describe("Photo Cache Handler", () => {
-  // beforeAll = () => {
-  //   process.env.PHOTO_CACHE_INTERVAL = 15000;
-  // }
-  
-  beforeEach = () => {
-    photoCache = [];
-    jest.useFakeTimers();
-  };
+  afterEach(() => {
+    clearCache();
+  });
 
-  afterAll = () => {
-    photoCache = [];
-    jest.useRealTimers();
-    
-  };
+  
+
+  test("Clean photo cache", () => {
+    clearCache();
+    addPhotoToCache({
+      image: {
+        approved: false,
+        created: Date.now(),
+        id: 0,
+        ref: 0
+      },
+      user: {
+        id: 0,
+        username: "e"
+      }
+    });
+    addPhotoToCache({
+      image: {
+        approved: false,
+        created: 0,
+        id: 1,
+        ref: 0
+      },
+      user: {
+        id: 1,
+        username: "f"
+      }
+    });
+    cleanPhotoCache();
+    expect(photoCache.length).toBeLessThan(2);
+  });
+
+  test("Clear photo cache", () => {
+    addPhotoToCache({
+      image: {
+        approved: false,
+        created: Date.now(),
+        id: 0,
+        ref: 0
+      },
+      user: {
+        id: 0,
+        username: "e"
+      }
+    });
+    clearCache();
+    console.log(photoCache)
+    expect(photoCache.length).toBe(0);
+  });
+
   test("Add photo to cache", () => {
-    
+    clearCache();
     addPhotoToCache({
       image: {
         approved: false,
@@ -40,13 +80,14 @@ describe("Photo Cache Handler", () => {
         username: "testUser"
       }
     });
-    expect(photoCache[0]).toMatchObject({
+    const tmp = photoCache.pop();
+    expect(tmp).toMatchObject({
       approved: false,
       created: 8675309,
       photoId: 0,
       ref: 0,
       userId: 0,
       username: "testUser"
-    })
+    });
   });
 });
