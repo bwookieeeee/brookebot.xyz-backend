@@ -1,7 +1,7 @@
 Brookebot.xyz Backend
 =====================
 
-|CodeQL| |CCMaintain| |CCCoverage| |TravisCI|
+|CodeQL| |CCMaintain| |CCCoverage| |TravisCI| |Ko-Fi|
 
 .. |CodeQL| image:: https://github.com/bwookieeeee/brookebot.xyz-backend/actions/workflows/codeql-analysis.yml/badge.svg
 
@@ -17,6 +17,8 @@ Brookebot.xyz Backend
 .. |TravisCI| image:: https://travis-ci.com/bwookieeeee/brookebot.xyz-backend.svg?branch=main
    :target: https://travis-ci.com/bwookieeeee/brookebot.xyz-backend
 
+.. |Ko-Fi| image:: https://ko-fi.com/img/githubbutton_sm.svg
+   :target: https://ko-fi.com/T6T75VJ5N
 
 
 A RESTful API and WebSocket server for data transfer on `Brookebot.xyz <https://brookebot.xyz>`_.
